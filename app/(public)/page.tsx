@@ -1,3 +1,6 @@
+import Loading from "./loading";
+import NotFound from "./not-found";
+
 export default function HomePage() {
   return (
     <main className="container-shell py-16">
@@ -13,6 +16,17 @@ export default function HomePage() {
           database, and Systems Built page.
         </p>
       </section>
+     //remove this it is for testing loading components
+      <section> 
+        <h1 className="max-w-3xl text-5xl font-semibold tracking-tight">example loading</h1>
+        <Loading></Loading>
+      </section>
+      //remove this it is for testing if page not found
+      <section>
+        <h1 className="max-w-3xl text-5xl font-semibold tracking-tight">example link not found</h1>
+        <NotFound></NotFound>
+      </section>
     </main>
+    
   );
 }
