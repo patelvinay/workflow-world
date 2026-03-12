@@ -101,8 +101,6 @@ function HomeNav() {
 function HeroSection() {
 	const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
 	const [isGlowVisible, setIsGlowVisible] = useState(false);
-	const ctaGlowColors =
-		"rgba(6, 182, 212, 0.45), rgba(139, 92, 246, 0.38), rgba(6, 182, 212, 0.24)";
 
 	const handleMouseMove = (event: React.MouseEvent<HTMLElement>) => {
 		const rect = event.currentTarget.getBoundingClientRect();
@@ -122,7 +120,7 @@ function HeroSection() {
 			onMouseMove={handleMouseMove}
 			onMouseLeave={handleMouseLeave}
 		>
-			<div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#0a0a0a_1px,transparent_1px),linear-gradient(to_bottom,#0a0a0a_1px,transparent_1px)] bg-[size:80px_80px]" />
+			<div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#0a0a0a_1px,transparent_1px),linear-gradient(to_bottom,#0a0a0a_1px,transparent_1px)] bg-size-[80px_80px]" />
 			<div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_30%_50%,rgba(6,182,212,0.05),transparent_50%),radial-gradient(circle_at_70%_50%,rgba(139,92,246,0.05),transparent_50%)]" />
 			<svg
 				className="absolute inset-0 z-0 h-full w-full opacity-30"
@@ -145,29 +143,79 @@ function HeroSection() {
 				</defs>
 			</svg>
 			<motion.div
-				className="pointer-events-none absolute z-10 hidden h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full will-change-transform md:block"
+				className="pointer-events-none absolute z-10 hidden h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 md:block"
 				animate={{
 					opacity: isGlowVisible ? 1 : 0,
-					rotate: isGlowVisible ? 360 : 0,
-					scale: isGlowVisible ? 1 : 0.96,
+					scale: isGlowVisible ? 1 : 0.92,
 				}}
 				transition={{
-					opacity: { duration: 0.2, ease: "easeOut" },
-					scale: { duration: 0.2, ease: "easeOut" },
-					rotate: {
-						duration: 18,
-						repeat: Infinity,
-						ease: "linear",
-					},
+					opacity: { duration: 0.25, ease: "easeOut" },
+					scale: { duration: 0.35, ease: "easeOut" },
 				}}
 				style={{
 					left: `${mousePosition.x}%`,
 					top: `${mousePosition.y}%`,
-					background: `conic-gradient(from 0deg, ${ctaGlowColors})`,
-					filter: "blur(26px)",
-					boxShadow: "0 0 40px rgba(6, 182, 212, 0.08)",
+					filter: "blur(18px)",
+					boxShadow: "0 0 180px rgba(139, 92, 246, 0.14)",
 				}}
-			/>
+			>
+				<motion.div
+					className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(103,232,249,0.82),rgba(6,182,212,0.28)_30%,rgba(139,92,246,0.18)_58%,transparent_78%)] mix-blend-screen"
+					animate={{
+						x: [0, 16, -12, 8, 0],
+						y: [0, -14, 10, 18, 0],
+						scale: [1, 1.08, 0.92, 1.04, 1],
+						borderRadius: ["42% 58% 55% 45% / 49% 39% 61% 51%", "57% 43% 48% 52% / 42% 58% 44% 56%", "46% 54% 40% 60% / 58% 42% 58% 42%", "60% 40% 57% 43% / 47% 53% 41% 59%", "42% 58% 55% 45% / 49% 39% 61% 51%"],
+					}}
+					transition={{
+						duration: 7.5,
+						repeat: Infinity,
+						ease: "easeInOut",
+					}}
+				/>
+				<motion.div
+					className="absolute left-[18%] top-[16%] h-[62%] w-[62%] rounded-full bg-[radial-gradient(circle_at_60%_40%,rgba(196,181,253,0.82),rgba(139,92,246,0.38)_36%,rgba(6,182,212,0.14)_66%,transparent_84%)] mix-blend-screen"
+					animate={{
+						x: [10, -8, 18, -4, 10],
+						y: [-12, 14, -6, 12, -12],
+						scale: [0.94, 1.06, 0.9, 1.08, 0.94],
+						rotate: [0, 18, -14, 9, 0],
+						borderRadius: ["59% 41% 63% 37% / 44% 57% 43% 56%", "44% 56% 39% 61% / 58% 47% 53% 42%", "62% 38% 55% 45% / 36% 64% 36% 64%", "48% 52% 60% 40% / 51% 38% 62% 49%", "59% 41% 63% 37% / 44% 57% 43% 56%"],
+					}}
+					transition={{
+						duration: 6.2,
+						repeat: Infinity,
+						ease: "easeInOut",
+					}}
+				/>
+				<motion.div
+					className="absolute left-[34%] top-[35%] h-[34%] w-[34%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.72),rgba(103,232,249,0.28)_38%,rgba(196,181,253,0.22)_62%,transparent_78%)] mix-blend-screen"
+					animate={{
+						x: [-8, 12, -4, 10, -8],
+						y: [10, -6, 12, -10, 10],
+						scale: [0.8, 1.14, 0.9, 1.08, 0.8],
+						opacity: [0.6, 0.9, 0.55, 0.82, 0.6],
+					}}
+					transition={{
+						duration: 4.8,
+						repeat: Infinity,
+						ease: "easeInOut",
+					}}
+				/>
+				<motion.div
+					className="absolute inset-[12%] rounded-full border border-cyan-300/10"
+					animate={{
+						scale: [0.92, 1.08, 0.96, 1.04, 0.92],
+						opacity: [0.1, 0.2, 0.08, 0.16, 0.1],
+						rotate: [0, 24, -18, 12, 0],
+					}}
+					transition={{
+						duration: 9,
+						repeat: Infinity,
+						ease: "easeInOut",
+					}}
+				/>
+			</motion.div>
 			<div className="relative z-20 mx-auto flex max-w-7xl flex-col justify-center gap-10 lg:flex-row lg:items-center lg:justify-center lg:gap-20">
 				<motion.div {...fadeUp} className="space-y-7 ">
 					<span
@@ -1305,7 +1353,10 @@ function LogsSection() {
 						<div>
 							<div className="mb-1 flex items-center gap-2">
 								<FileText className="h-4 w-4 text-violet-400" />
-								<span className="text-xs uppercase tracking-wider text-violet-400" style={monoStyle}>
+								<span
+									className="text-xs uppercase tracking-wider text-violet-400"
+									style={monoStyle}
+								>
 									Field Logs
 								</span>
 							</div>
@@ -1313,8 +1364,8 @@ function LogsSection() {
 						</div>
 					</div>
 					<p className="border-l-2 border-gray-800 pl-4 text-lg text-gray-500">
-						Technical notes, architecture decisions, and lessons from the field.
-						Documenting the journey from concept to production.
+						Technical notes, architecture decisions, and lessons from the field. Documenting the
+						journey from concept to production.
 					</p>
 				</div>
 
@@ -1460,7 +1511,10 @@ function DispatchSection() {
 						<div>
 							<div className="mb-1 flex items-center gap-2">
 								<Radio className="h-4 w-4 animate-pulse text-violet-400" />
-								<span className="text-xs uppercase tracking-wider text-violet-400" style={monoStyle}>
+								<span
+									className="text-xs uppercase tracking-wider text-violet-400"
+									style={monoStyle}
+								>
 									Dispatch Terminal
 								</span>
 							</div>
@@ -1468,8 +1522,8 @@ function DispatchSection() {
 						</div>
 					</div>
 					<p className="border-l-2 border-gray-800 pl-4 text-lg text-gray-500">
-						Receive encrypted transmissions on engineering deep dives, system launches,
-						and technical insights directly to your inbox.
+						Receive encrypted transmissions on engineering deep dives, system launches, and
+						technical insights directly to your inbox.
 					</p>
 				</div>
 
@@ -1510,9 +1564,7 @@ function DispatchSection() {
 
 								<form className="space-y-5">
 									<div>
-										<label className="mb-2 block text-xs text-gray-600">
-											→ OPERATOR_NAME:
-										</label>
+										<label className="mb-2 block text-xs text-gray-600">→ OPERATOR_NAME:</label>
 										<input
 											type="text"
 											placeholder="Enter your name"
@@ -1521,9 +1573,7 @@ function DispatchSection() {
 									</div>
 
 									<div>
-										<label className="mb-2 block text-xs text-gray-600">
-											→ EMAIL_ADDRESS:
-										</label>
+										<label className="mb-2 block text-xs text-gray-600">→ EMAIL_ADDRESS:</label>
 										<input
 											type="email"
 											placeholder="operator@domain.com"
@@ -1532,9 +1582,7 @@ function DispatchSection() {
 									</div>
 
 									<div>
-										<label className="mb-2 block text-xs text-gray-600">
-											→ INTEREST_AREA:
-										</label>
+										<label className="mb-2 block text-xs text-gray-600">→ INTEREST_AREA:</label>
 										<select className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-sm text-white transition-all focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/20">
 											<option value="" className="bg-gray-950">
 												Select primary focus
@@ -1570,8 +1618,8 @@ function DispatchSection() {
 
 								<div className="mt-6 border-t border-white/10 pt-6">
 									<p className="text-xs text-gray-600">
-										<span className="text-gray-700">//</span> No spam. Unsubscribe
-										anytime. Privacy-first communication.
+										<span className="text-gray-700">//</span> No spam. Unsubscribe anytime.
+										Privacy-first communication.
 									</p>
 								</div>
 							</div>
