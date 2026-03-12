@@ -22,7 +22,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about Next.js, take a look at the following resources†:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
@@ -35,8 +35,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-
 figma Jamboard - https://www.figma.com/board/6NDggI8sOUgWpnuLiAWPF9/Workflow-World-System-Design-Flow?node-id=0-1&t=9s85MUQpUoxmtGXC-1
-
 
 figma design - https://www.figma.com/make/2kYi50BtgMaTj3ijc8Iwix/vinays-portfolio--Community-?t=E3YhkYVC5gx7peyC-1
