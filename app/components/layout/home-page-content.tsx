@@ -8,6 +8,7 @@ import {
 	ArrowRight,
 	Database,
 	FileText,
+	GitBranch,
 	Layers,
 	Radio,
 	Send,
@@ -46,6 +47,11 @@ const systems = [
 	},
 ];
 
+const monoStyle = {
+	fontFamily:
+		"var(--font-geist-mono, ui-monospace), SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+};
+
 export function HomePageContent() {
 	return (
 		<div className="min-h-screen bg-black text-white">
@@ -72,7 +78,9 @@ function HomeNav() {
 					</div>
 					<div>
 						<p className="text-sm leading-none">Workflow World</p>
-						<p className="text-xs leading-none text-cyan-400">× Builder Lab</p>
+						<p className="text-xs leading-none text-cyan-400" style={monoStyle}>
+							× Builder Lab
+						</p>
 					</div>
 				</Link>
 
@@ -118,13 +126,34 @@ function HeroSection() {
 
 	return (
 		<section
-			className="relative overflow-visible px-6 py-4 lg:px-8"
+			className="relative z-0 overflow-hidden px-6 py-4 lg:px-8"
 			onMouseMove={handleMouseMove}
 			onMouseLeave={handleMouseLeave}
 		>
-			<div className="pointer-events-none absolute inset-0 opacity-90 bg-[linear-gradient(to_right,#171717_1px,transparent_1px),linear-gradient(to_bottom,#171717_1px,transparent_1px)] bg-[size:2cm_2cm] [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_82%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_82%,transparent_100%)]" />
+			<div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#0a0a0a_1px,transparent_1px),linear-gradient(to_bottom,#0a0a0a_1px,transparent_1px)] bg-[size:80px_80px]" />
+			<div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_30%_50%,rgba(6,182,212,0.05),transparent_50%),radial-gradient(circle_at_70%_50%,rgba(139,92,246,0.05),transparent_50%)]" />
+			<svg
+				className="absolute inset-0 z-0 h-full w-full opacity-30"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<line x1="10%" y1="20%" x2="40%" y2="50%" stroke="url(#grad1)" strokeWidth="1" />
+				<line x1="40%" y1="50%" x2="60%" y2="30%" stroke="url(#grad1)" strokeWidth="1" />
+				<line x1="60%" y1="70%" x2="90%" y2="60%" stroke="url(#grad2)" strokeWidth="1" />
+				<defs>
+					<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+						<stop offset="0%" stopColor="rgb(6,182,212)" stopOpacity="0" />
+						<stop offset="50%" stopColor="rgb(6,182,212)" stopOpacity="0.5" />
+						<stop offset="100%" stopColor="rgb(6,182,212)" stopOpacity="0" />
+					</linearGradient>
+					<linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+						<stop offset="0%" stopColor="rgb(139,92,246)" stopOpacity="0" />
+						<stop offset="50%" stopColor="rgb(139,92,246)" stopOpacity="0.5" />
+						<stop offset="100%" stopColor="rgb(139,92,246)" stopOpacity="0" />
+					</linearGradient>
+				</defs>
+			</svg>
 			<motion.div
-				className="pointer-events-none absolute z-20 h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full will-change-transform"
+				className="pointer-events-none absolute z-10 h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full will-change-transform"
 				animate={{
 					opacity: isGlowVisible ? 1 : 0,
 					rotate: isGlowVisible ? 360 : 0,
@@ -147,25 +176,28 @@ function HeroSection() {
 					boxShadow: "0 0 40px rgba(6, 182, 212, 0.08)",
 				}}
 			/>
-			<div className="relative z-30 mx-auto flex max-w-7xl flex-col justify-center gap-10 lg:flex-row lg:items-center lg:justify-around">
+			<div className="relative z-20 mx-auto flex max-w-7xl flex-col justify-center gap-10 lg:flex-row lg:items-center lg:justify-center lg:gap-20">
 				<motion.div {...fadeUp} className="space-y-7 ">
-					<span className="inline-flex items-center gap-2 rounded-md border border-cyan-500/30 bg-cyan-500/10 px-3 py-2 text-[10px] font-mono text-cyan-300">
+					<span
+						className="inline-flex items-center gap-2 rounded-md border border-cyan-500/30 bg-cyan-500/10 px-3 py-2 text-[10px] text-cyan-300"
+						style={monoStyle}
+					>
 						<span className="relative flex size-2">
 							<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-300 opacity-75"></span>
 							<span className="relative inline-flex size-2 rounded-full bg-cyan-300"></span>
 						</span>
 						OPERATOR_ID: WW-2847 • CLEARANCE: ARCHITECT
 					</span>
-					<h1 className="text-5xl leading-tight lg:text-7xl">
-						<span className="block text-gray-500 text-3xl font-mono mb-1 tracking-wider">
+					<h1 className="text-5xl lg:text-7xl tracking-tight leading-[1.1] cursor-default">
+						<span className="mb-2 block text-2xl text-gray-500 lg:text-3xl" style={monoStyle}>
 							./initialize
 						</span>
-						<span className="block">Building systems</span>
-						<span className="block bg-linear-to-r from-cyan-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
+						<span className="block text-white">Building systems</span>
+						<span className="block bg-gradient-to-r from-cyan-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
 							worth using
 						</span>
 					</h1>
-					<p className="max-w-xl border-l-2 border-cyan-500/30 pl-4 text-md md:text-lg text-gray-400">
+					<p className="text-lg lg:text-xl text-gray-400 leading-relaxed max-w-xl border-l-2 border-cyan-500/30 pl-4 cursor-default">
 						Welcome to the lab. I architect, ship, and maintain production systems at the
 						intersection of elegant code and real-world impact. This is my operational base.
 					</p>
@@ -185,29 +217,108 @@ function HeroSection() {
 						</a>
 					</div>
 				</motion.div>
-				<motion.div {...fadeUp} className="lg:w-1/3 w-full lg:min-w-100 ">
-					<div className="overflow-hidden rounded-xl border border-cyan-500/20 bg-black/80 shadow-2xl">
-						<div className="flex items-center justify-between rounded-t-xl border-b border-white/10 bg-linear-to-r from-cyan-500/20 to-violet-600/20 px-4 py-2 text-xs font-mono">
-							<div className="flex gap-1.5 items-center">
-								<div className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
-								<div className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
-								<div className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
-								<span className="text-gray-500 px-1">workflow-world.local</span>
+				<motion.div {...fadeUp} className="w-full lg:w-[28rem] lg:flex-none xl:w-[31rem]">
+					<div className="relative">
+						<div className="relative overflow-hidden rounded-xl border border-cyan-500/30 bg-black/90 shadow-2xl backdrop-blur-xl">
+							<div className="flex items-center justify-between border-b border-white/10 bg-gradient-to-r from-cyan-950/50 to-violet-950/50 px-4 py-2.5">
+								<div className="flex items-center gap-3">
+									<div className="flex gap-1.5">
+										<div className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
+										<div className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
+										<div className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
+									</div>
+									<span className="text-xs text-gray-500" style={monoStyle}>
+										workflow-world.local
+									</span>
+								</div>
+								<div className="flex items-center gap-2">
+									<Activity className="h-3 w-3 animate-pulse text-green-400" />
+									<span className="text-xs text-green-400" style={monoStyle}>
+										LIVE
+									</span>
+								</div>
 							</div>
 
-							<span className="text-green-400 flex justify-center items-center gap-1 text-md">
-								<Activity className="size-3 animate-pulse" />
-								LIVE
-							</span>
+							<div className="h-80 space-y-3 overflow-hidden p-4 text-xs" style={monoStyle}>
+								<div className="text-cyan-400">
+									<span className="text-gray-600">$</span> ./initialize-systems
+								</div>
+
+								<div className="space-y-1.5 text-gray-400">
+									<div className="flex items-center gap-2">
+										<span className="text-green-400">✓</span>
+										<span>API Gateway v2.4.1 responding [45ms avg]</span>
+									</div>
+									<div className="flex items-center gap-2">
+										<span className="text-green-400">✓</span>
+										<span>Database cluster synced [3 nodes]</span>
+									</div>
+									<div className="flex items-center gap-2">
+										<span className="text-green-400">✓</span>
+										<span>CDN edge cache optimal [247 req/s]</span>
+									</div>
+									<div className="flex items-center gap-2">
+										<span className="text-cyan-400">⟳</span>
+										<span>Background jobs processing [12 active]</span>
+									</div>
+								</div>
+
+								<div className="border-t border-white/5 pt-2">
+									<div className="mb-2 text-violet-400">→ Active Systems:</div>
+									<div className="space-y-1.5 pl-4 text-gray-500">
+										<div className="flex justify-between">
+											<span>neural-commerce</span>
+											<span className="text-green-400">prod</span>
+										</div>
+										<div className="flex justify-between">
+											<span>quantum-orchestrator</span>
+											<span className="text-yellow-400">staging</span>
+										</div>
+										<div className="flex justify-between">
+											<span>cascade-analytics</span>
+											<span className="text-green-400">prod</span>
+										</div>
+										<div className="flex justify-between">
+											<span>nexus-design-sys</span>
+											<span className="text-green-400">prod</span>
+										</div>
+									</div>
+								</div>
+
+								<div className="border-t border-white/5 pt-2">
+									<div className="mb-2 text-violet-400">→ Latest Activity:</div>
+									<div className="space-y-1 pl-4 text-[10px] text-gray-600">
+										<div>14:32 Deployment completed: neural-commerce@v1.8.2</div>
+										<div>14:28 Merged PR #847: Add Redis caching layer</div>
+										<div>14:15 System check passed: all services nominal</div>
+									</div>
+								</div>
+
+								<div className="flex items-center gap-2 pt-2">
+									<span className="text-cyan-400">$</span>
+									<div className="h-3.5 w-2 animate-pulse bg-cyan-400" />
+								</div>
+							</div>
 						</div>
-						<div className="space-y-2 p-4 font-mono text-xs text-gray-300">
-							<p>
-								<span className="text-cyan-400">$</span> ./initialize-systems
-							</p>
-							<p>✓ API Gateway responding [45ms]</p>
-							<p>✓ Database synced [3 nodes]</p>
-							<p>✓ CDN cache optimal</p>
-							<p>⟳ Queue workers processing</p>
+
+						<div className="absolute -left-4 top-8 w-32 rounded-lg border border-violet-500/30 bg-black/90 p-3 shadow-xl backdrop-blur-xl">
+							<div className="mb-2 flex items-center gap-2">
+								<GitBranch className="h-3 w-3 text-violet-400" />
+								<span className="text-xs text-gray-500">Deploy Freq</span>
+							</div>
+							<div className="text-xl text-white">24/wk</div>
+							<div className="mt-1 text-[10px] text-green-400">↑ 12% vs last month</div>
+						</div>
+
+						<div className="absolute -right-4 bottom-8 w-36 rounded-lg border border-cyan-500/30 bg-black/90 p-3 shadow-xl backdrop-blur-xl">
+							<div className="mb-2 flex items-center gap-2">
+								<Layers className="h-3 w-3 text-cyan-400" />
+								<span className="text-xs text-gray-500">Active Sprint</span>
+							</div>
+							<div className="text-xl text-white">Week 8/12</div>
+							<div className="mt-2 h-1 overflow-hidden rounded-full bg-white/10">
+								<div className="h-full w-2/3 rounded-full bg-gradient-to-r from-cyan-500 to-violet-500" />
+							</div>
 						</div>
 					</div>
 				</motion.div>
@@ -232,7 +343,9 @@ function TerminalSection() {
 					].map((m) => (
 						<div key={m.label} className="rounded-lg border border-white/10 bg-white/5 p-4">
 							<p className="text-xs text-gray-500">{m.label}</p>
-							<p className="mt-2 text-2xl font-mono text-cyan-400">{m.value}</p>
+							<p className="mt-2 text-2xl text-cyan-400" style={monoStyle}>
+								{m.value}
+							</p>
 						</div>
 					))}
 				</div>
@@ -256,7 +369,7 @@ function SystemsSection() {
 							className="rounded-xl border border-white/10 bg-linear-to-br from-gray-950/70 to-black/80 p-6"
 						>
 							<div className="mb-2 flex items-center justify-between">
-								<p className="font-mono text-xs text-gray-500">
+								<p className="text-xs text-gray-500" style={monoStyle}>
 									{s.id} · {s.codename}
 								</p>
 								<p className="text-xs text-green-400">{s.status}</p>
