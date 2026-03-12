@@ -12,7 +12,8 @@ import {
 	Send,
 	Terminal,
 } from "lucide-react";
-
+import { Spinner } from "@/components/ui/spinner";
+import { Button } from "@/components/ui/button";
 const fadeUp = {
 	initial: { opacity: 0, y: 24 },
 	whileInView: { opacity: 1, y: 0 },
@@ -55,6 +56,8 @@ export function HomePageContent() {
 				<SystemsSection />
 				<LogsSection />
 				<DispatchSection />
+
+				<TestShadcn />
 			</main>
 			<FooterSection />
 		</div>
@@ -272,5 +275,15 @@ function FooterSection() {
 				</div>
 			</div>
 		</footer>
+	);
+}
+// to test shadcn installation
+function TestShadcn() {
+	return (
+		<div className="w-full flex justify-center">
+			<Button size="lg" variant="destructive">
+				Loading
+			</Button>
+		</div>
 	);
 }
