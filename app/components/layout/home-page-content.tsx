@@ -153,7 +153,7 @@ function HeroSection() {
 				</defs>
 			</svg>
 			<motion.div
-				className="pointer-events-none absolute z-10 h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full will-change-transform"
+				className="pointer-events-none absolute z-10 hidden h-[190px] w-[190px] -translate-x-1/2 -translate-y-1/2 rounded-full will-change-transform md:block"
 				animate={{
 					opacity: isGlowVisible ? 1 : 0,
 					rotate: isGlowVisible ? 360 : 0,
@@ -213,8 +213,24 @@ function HeroSection() {
 							href="#logs"
 							className="inline-flex items-center gap-2 rounded-lg border border-violet-500/30 bg-black/40 px-5 py-3 text-sm text-violet-300"
 						>
-							<FileText className="h-4 w-4" /> Read logs
+							<FileText className="h-4 w-4" /> Systems Map
 						</a>
+					</div>
+					<div className="grid grid-cols-3 gap-4 pt-4">
+						{[
+							{ value: "47", label: "Systems", sublabel: "deployed" },
+							{ value: "12K+", label: "Commits", sublabel: "this year" },
+							{ value: "99.8%", label: "Uptime", sublabel: "production" },
+						].map((stat, i) => (
+							<div key={i} className="relative">
+								<div className="text-3xl font-mono text-cyan-400">{stat.value}</div>
+								<div className="text-xs text-gray-500 uppercase tracking-wider">{stat.label}</div>
+								<div className="text-xs text-gray-600">{stat.sublabel}</div>
+								{i < 2 && (
+									<div className="absolute right-0 top-1/2 -translate-y-1/2 h-8 w-px bg-white/10" />
+								)}
+							</div>
+						))}
 					</div>
 				</motion.div>
 				<motion.div {...fadeUp} className="w-full lg:w-[28rem] lg:flex-none xl:w-[31rem]">
