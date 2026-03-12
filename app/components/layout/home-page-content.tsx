@@ -5,7 +5,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
 	Activity,
+	AlertCircle,
 	ArrowRight,
+	CheckCircle2,
+	Clock,
 	Cpu,
 	Database,
 	FileText,
@@ -14,7 +17,10 @@ import {
 	Layers,
 	Radio,
 	Send,
+	Target,
 	Terminal,
+	TrendingUp,
+	Zap,
 } from "lucide-react";
 
 const fadeUp = {
@@ -23,31 +29,6 @@ const fadeUp = {
 	viewport: { once: true, amount: 0.2 },
 	transition: { duration: 0.45 },
 };
-
-const systems = [
-	{
-		id: "SYS-001",
-		codename: "neural-commerce",
-		title: "Neural Commerce Engine",
-		objective:
-			"AI commerce platform with recommendation, inventory prediction, and personalization.",
-		status: "Production",
-	},
-	{
-		id: "SYS-002",
-		codename: "quantum-orchestrator",
-		title: "Quantum Task Orchestrator",
-		objective: "Distributed task system with priority queues and autoscaling workers.",
-		status: "Staging",
-	},
-	{
-		id: "SYS-003",
-		codename: "cascade-analytics",
-		title: "Cascade Analytics Hub",
-		objective: "Realtime analytics pipelines with dashboards and anomaly detection.",
-		status: "Production",
-	},
-];
 
 const monoStyle = {
 	fontFamily:
@@ -370,10 +351,7 @@ function TerminalSection() {
 						<div>
 							<div className="mb-1 flex items-center gap-2">
 								<Terminal className="h-4 w-4 text-cyan-400" />
-								<span
-									className="text-xs uppercase tracking-wider text-cyan-400"
-									style={monoStyle}
-								>
+								<span className="text-xs uppercase tracking-wider text-cyan-400" style={monoStyle}>
 									Outpost Terminal
 								</span>
 							</div>
@@ -381,8 +359,8 @@ function TerminalSection() {
 						</div>
 					</div>
 					<p className="border-l-2 border-gray-800 pl-4 text-lg text-gray-500">
-						Real-time view of active deployments, running processes, and system health
-						across all production environments.
+						Real-time view of active deployments, running processes, and system health across all
+						production environments.
 					</p>
 				</div>
 
@@ -418,9 +396,7 @@ function TerminalSection() {
 							].map((tab) => (
 								<button
 									key={tab.id}
-									onClick={() =>
-										setActiveTab(tab.id as "status" | "processes" | "systems")
-									}
+									onClick={() => setActiveTab(tab.id as "status" | "processes" | "systems")}
 									className={`relative flex items-center gap-2 px-4 py-3 text-xs transition-all lg:px-6 ${
 										activeTab === tab.id
 											? "bg-cyan-500/5 text-cyan-400"
@@ -448,9 +424,7 @@ function TerminalSection() {
 									</div>
 
 									<div className="space-y-3">
-										<div className="mb-2 text-violet-400">
-											⎯⎯⎯ Infrastructure Health ⎯⎯⎯
-										</div>
+										<div className="mb-2 text-violet-400">⎯⎯⎯ Infrastructure Health ⎯⎯⎯</div>
 
 										{[
 											{
@@ -498,9 +472,7 @@ function TerminalSection() {
 												>
 													<div className="flex items-center gap-3">
 														<span className={tone.dot}>●</span>
-														<span className="min-w-[180px] text-gray-300">
-															{item.service}
-														</span>
+														<span className="min-w-[180px] text-gray-300">{item.service}</span>
 														<span className={`rounded-full px-2 py-0.5 text-xs ${tone.badge}`}>
 															{item.status}
 														</span>
@@ -644,9 +616,7 @@ function TerminalSection() {
 										<span className="text-gray-600">workflow@outpost-01</span>
 										<span className="text-gray-700">~</span>
 										<span className="text-violet-400">$</span>
-										<span className="text-cyan-400">
-											kubectl get deployments --all-namespaces
-										</span>
+										<span className="text-cyan-400">kubectl get deployments --all-namespaces</span>
 									</div>
 
 									<div className="space-y-3">
@@ -702,21 +672,15 @@ function TerminalSection() {
 																{system.env}
 															</span>
 														</div>
-														<div className="text-xs text-gray-500">
-															Version: {system.version}
-														</div>
+														<div className="text-xs text-gray-500">Version: {system.version}</div>
 													</div>
 													<div className="text-right">
-														<div className="mb-1 text-xs text-green-400">
-															{system.status}
-														</div>
+														<div className="mb-1 text-xs text-green-400">{system.status}</div>
 														<div className="text-xs text-gray-600">{system.uptime}</div>
 													</div>
 												</div>
 												<div className="flex items-center justify-between text-xs">
-													<span className="text-gray-500">
-														Replicas: {system.replicas}
-													</span>
+													<span className="text-gray-500">Replicas: {system.replicas}</span>
 													<div className="h-1 w-32 overflow-hidden rounded-full bg-white/10">
 														<div className="h-full w-full bg-gradient-to-r from-cyan-500 to-violet-500" />
 													</div>
@@ -755,40 +719,222 @@ function TerminalSection() {
 }
 
 function SystemsSection() {
+	const missions = [
+		{
+			id: "MISSION-2847",
+			title: "Neural Commerce v2.0",
+			objective: "Scale AI recommendation engine",
+			status: "active" as const,
+			priority: "high" as const,
+			progress: 67,
+			deadline: "Mar 28, 2026",
+			metrics: { commits: 142, tests: "98%" },
+			gradientClass: "from-cyan-500 to-blue-600",
+		},
+		{
+			id: "MISSION-2851",
+			title: "Quantum Task System",
+			objective: "Implement distributed job queuing",
+			status: "active" as const,
+			priority: "critical" as const,
+			progress: 45,
+			deadline: "Apr 12, 2026",
+			metrics: { commits: 87, tests: "94%" },
+			gradientClass: "from-violet-500 to-purple-600",
+		},
+		{
+			id: "MISSION-2863",
+			title: "Analytics Pipeline Upgrade",
+			objective: "Real-time data processing layer",
+			status: "review" as const,
+			priority: "medium" as const,
+			progress: 89,
+			deadline: "Mar 15, 2026",
+			metrics: { commits: 203, tests: "99%" },
+			gradientClass: "from-emerald-500 to-green-600",
+		},
+		{
+			id: "MISSION-2891",
+			title: "Design System v2",
+			objective: "Component library modernization",
+			status: "deployed" as const,
+			priority: "low" as const,
+			progress: 100,
+			deadline: "Completed",
+			metrics: { commits: 327, tests: "100%" },
+			gradientClass: "from-amber-500 to-orange-600",
+		},
+	];
+
 	return (
-		<motion.section {...fadeUp} id="systems" className="px-6 py-20 lg:px-8">
+		<section id="systems" className="relative px-6 py-24 lg:px-8">
 			<div className="mx-auto max-w-7xl">
-				<div className="mb-8 flex items-center gap-3">
-					<Database className="h-5 w-5 text-cyan-400" />
-					<h2 className="text-3xl">Deployed Systems</h2>
-				</div>
-				<div className="space-y-4">
-					{systems.map((s) => (
-						<article
-							key={s.id}
-							className="rounded-xl border border-white/10 bg-linear-to-br from-gray-950/70 to-black/80 p-6"
-						>
-							<div className="mb-2 flex items-center justify-between">
-								<p className="text-xs text-gray-500" style={monoStyle}>
-									{s.id} · {s.codename}
-								</p>
-								<p className="text-xs text-green-400">{s.status}</p>
+				<div className="mb-12 max-w-3xl">
+					<div className="mb-4 flex items-center gap-3">
+						<div className="h-8 w-1 bg-gradient-to-b from-cyan-500 to-violet-500" />
+						<div>
+							<div className="mb-1 flex items-center gap-2">
+								<Target className="h-4 w-4 text-violet-400" />
+								<span
+									className="text-xs uppercase tracking-wider text-violet-400"
+									style={monoStyle}
+								>
+									Active Missions
+								</span>
 							</div>
-							<h3 className="text-xl">{s.title}</h3>
-							<p className="mt-2 text-sm text-gray-400">{s.objective}</p>
-						</article>
+							<h2 className="text-3xl text-white lg:text-5xl">Current Operations</h2>
+						</div>
+					</div>
+					<p className="border-l-2 border-gray-800 pl-4 text-lg text-gray-500">
+						Mission-critical systems in active development. Track progress, objectives, and
+						deployment timelines.
+					</p>
+				</div>
+
+				<div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+					{missions.map((mission) => (
+						<div
+							key={mission.id}
+							className="group relative overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-gray-950/80 to-black/80 backdrop-blur-sm transition-all hover:border-cyan-500/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.1)]"
+						>
+							<div className="border-b border-white/10 bg-gradient-to-r from-cyan-950/20 to-violet-950/20 px-6 py-4">
+								<div className="mb-2 flex items-start justify-between">
+									<div>
+										<div className="mb-1 text-xs text-gray-600" style={monoStyle}>
+											{mission.id}
+										</div>
+										<h3 className="text-lg text-white">{mission.title}</h3>
+									</div>
+									<div
+										className={`rounded-full border px-3 py-1 text-xs ${
+											mission.priority === "critical"
+												? "border-red-500/30 bg-red-500/10 text-red-400"
+												: mission.priority === "high"
+													? "border-orange-500/30 bg-orange-500/10 text-orange-400"
+													: mission.priority === "medium"
+														? "border-yellow-500/30 bg-yellow-500/10 text-yellow-400"
+														: "border-gray-500/30 bg-gray-500/10 text-gray-400"
+										}`}
+										style={monoStyle}
+									>
+										{mission.priority}
+									</div>
+								</div>
+								<p className="text-sm text-gray-400">{mission.objective}</p>
+							</div>
+
+							<div className="space-y-4 p-6">
+								<div>
+									<div className="mb-2 flex items-center justify-between">
+										<span className="text-xs text-gray-500" style={monoStyle}>
+											PROGRESS
+										</span>
+										<span className="text-sm text-cyan-400" style={monoStyle}>
+											{mission.progress}%
+										</span>
+									</div>
+									<div className="h-2 overflow-hidden rounded-full border border-white/10 bg-white/5">
+										<div
+											className={`h-full bg-gradient-to-r transition-all ${mission.gradientClass}`}
+											style={{ width: `${mission.progress}%` }}
+										/>
+									</div>
+								</div>
+
+								<div className="grid grid-cols-2 gap-4">
+									<div className="rounded-lg border border-white/10 bg-white/5 p-3">
+										<div className="mb-1 text-xs text-gray-500" style={monoStyle}>
+											COMMITS
+										</div>
+										<div className="text-xl text-white" style={monoStyle}>
+											{mission.metrics.commits}
+										</div>
+									</div>
+									<div className="rounded-lg border border-white/10 bg-white/5 p-3">
+										<div className="mb-1 text-xs text-gray-500" style={monoStyle}>
+											TEST COV
+										</div>
+										<div className="text-xl text-white" style={monoStyle}>
+											{mission.metrics.tests}
+										</div>
+									</div>
+								</div>
+
+								<div className="flex items-center justify-between border-t border-white/10 pt-2">
+									<div className="flex items-center gap-2">
+										{mission.status === "deployed" ? (
+											<CheckCircle2 className="h-4 w-4 text-green-400" />
+										) : mission.status === "review" ? (
+											<AlertCircle className="h-4 w-4 text-yellow-400" />
+										) : (
+											<Zap className="h-4 w-4 animate-pulse text-cyan-400" />
+										)}
+										<span
+											className={`text-xs uppercase ${
+												mission.status === "deployed"
+													? "text-green-400"
+													: mission.status === "review"
+														? "text-yellow-400"
+														: "text-cyan-400"
+											}`}
+											style={monoStyle}
+										>
+											{mission.status}
+										</span>
+									</div>
+									<div className="flex items-center gap-2 text-xs text-gray-500">
+										<Clock className="h-3.5 w-3.5" />
+										<span style={monoStyle}>{mission.deadline}</span>
+									</div>
+								</div>
+							</div>
+
+							<div
+								className={`absolute -right-24 -bottom-24 h-48 w-48 rounded-full bg-gradient-to-br opacity-0 blur-3xl transition-opacity group-hover:opacity-10 ${mission.gradientClass}`}
+							/>
+						</div>
 					))}
 				</div>
-				<div className="mt-8">
-					<Link
-						href="/systems"
-						className="inline-flex items-center gap-2 rounded-lg border border-violet-500/30 bg-violet-500/10 px-5 py-3 text-violet-300"
-					>
-						Explore all systems <ArrowRight className="h-4 w-4" />
-					</Link>
+
+				<div className="mt-12 rounded-xl border border-white/10 bg-gradient-to-br from-gray-950/50 to-black/50 p-8">
+					<div className="mb-6 flex items-center gap-3">
+						<TrendingUp className="h-5 w-5 text-cyan-400" />
+						<h3 className="text-xl text-white">Lab Activity Metrics</h3>
+					</div>
+					<div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+						{[
+							{ label: "Active Sprints", value: "4", change: "+2 this quarter", trend: "up" },
+							{ label: "Code Velocity", value: "2.4K", change: "lines/week", trend: "up" },
+							{ label: "Deploy Frequency", value: "24", change: "per week", trend: "up" },
+							{
+								label: "Mean Time to Deploy",
+								value: "18min",
+								change: "-3min vs last month",
+								trend: "down",
+							},
+						].map((stat) => (
+							<div key={stat.label} className="border-l-2 border-cyan-500/30 pl-4">
+								<div
+									className="mb-1 text-xs uppercase tracking-wider text-gray-600"
+									style={monoStyle}
+								>
+									{stat.label}
+								</div>
+								<div className="mb-1 text-3xl text-white" style={monoStyle}>
+									{stat.value}
+								</div>
+								<div
+									className={`text-xs ${stat.trend === "up" ? "text-green-400" : "text-cyan-400"}`}
+									style={monoStyle}
+								>
+									{stat.change}
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
-		</motion.section>
+		</section>
 	);
 }
 
