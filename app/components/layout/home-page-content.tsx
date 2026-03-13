@@ -46,7 +46,7 @@ const monoStyle = {
 export function HomePageContent() {
 	return (
 		<div className="min-h-screen bg-black text-white">
-			<HomeNav currentPage="home" />
+			<HomeNav />
 			<main className="pt-16">
 				<HeroSection />
 				<TerminalSection />
@@ -59,10 +59,7 @@ export function HomePageContent() {
 		</div>
 	);
 }
-type HomeNavProps = {
-	currentPage: string;
-};
-export function HomeNav({ currentPage }: HomeNavProps) {
+export function HomeNav() {
 	return (
 		<nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
 			<div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
@@ -79,12 +76,8 @@ export function HomeNav({ currentPage }: HomeNavProps) {
 				</Link>
 
 				<div className="hidden items-center gap-7 md:flex">
-					{/* Check if this logic implemented correctly? */}
-					<Link
-						href={currentPage === "systems" ? "/" : "/systems"}
-						className="text-sm text-gray-400 hover:text-cyan-400"
-					>
-						{currentPage === "systems" ? "Home" : "Systems"}
+					<Link href="/systems" className="text-sm text-gray-400 hover:text-cyan-400">
+						Systems
 					</Link>
 					<a href="#logs" className="text-sm text-gray-400 hover:text-cyan-400">
 						Field Logs
@@ -1634,12 +1627,13 @@ function DispatchSection() {
 									</button>
 								</form>
 
-								<div className="mt-6 border-t border-white/10 pt-6">
-									<p className="text-xs text-gray-600">
-										<span className="text-gray-700">//</span> No spam. Unsubscribe anytime.
-										Privacy-first communication.
-									</p>
-								</div>
+									<div className="mt-6 border-t border-white/10 pt-6">
+										<p className="text-xs text-gray-600">
+											<span className="text-gray-700">{"//"}</span> No spam. Unsubscribe
+											anytime.
+											Privacy-first communication.
+										</p>
+									</div>
 							</div>
 						</div>
 					</div>
