@@ -59,8 +59,7 @@ export function HomePageContent() {
 		</div>
 	);
 }
-
-function HomeNav() {
+export function HomeNav() {
 	return (
 		<nav className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
 			<div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 lg:px-8">
@@ -165,7 +164,13 @@ function HeroSection() {
 						x: [0, 16, -12, 8, 0],
 						y: [0, -14, 10, 18, 0],
 						scale: [1, 1.08, 0.92, 1.04, 1],
-						borderRadius: ["42% 58% 55% 45% / 49% 39% 61% 51%", "57% 43% 48% 52% / 42% 58% 44% 56%", "46% 54% 40% 60% / 58% 42% 58% 42%", "60% 40% 57% 43% / 47% 53% 41% 59%", "42% 58% 55% 45% / 49% 39% 61% 51%"],
+						borderRadius: [
+							"42% 58% 55% 45% / 49% 39% 61% 51%",
+							"57% 43% 48% 52% / 42% 58% 44% 56%",
+							"46% 54% 40% 60% / 58% 42% 58% 42%",
+							"60% 40% 57% 43% / 47% 53% 41% 59%",
+							"42% 58% 55% 45% / 49% 39% 61% 51%",
+						],
 					}}
 					transition={{
 						duration: 7.5,
@@ -180,7 +185,13 @@ function HeroSection() {
 						y: [-12, 14, -6, 12, -12],
 						scale: [0.94, 1.06, 0.9, 1.08, 0.94],
 						rotate: [0, 18, -14, 9, 0],
-						borderRadius: ["59% 41% 63% 37% / 44% 57% 43% 56%", "44% 56% 39% 61% / 58% 47% 53% 42%", "62% 38% 55% 45% / 36% 64% 36% 64%", "48% 52% 60% 40% / 51% 38% 62% 49%", "59% 41% 63% 37% / 44% 57% 43% 56%"],
+						borderRadius: [
+							"59% 41% 63% 37% / 44% 57% 43% 56%",
+							"44% 56% 39% 61% / 58% 47% 53% 42%",
+							"62% 38% 55% 45% / 36% 64% 36% 64%",
+							"48% 52% 60% 40% / 51% 38% 62% 49%",
+							"59% 41% 63% 37% / 44% 57% 43% 56%",
+						],
 					}}
 					transition={{
 						duration: 6.2,
@@ -1616,12 +1627,13 @@ function DispatchSection() {
 									</button>
 								</form>
 
-								<div className="mt-6 border-t border-white/10 pt-6">
-									<p className="text-xs text-gray-600">
-										<span className="text-gray-700">//</span> No spam. Unsubscribe anytime.
-										Privacy-first communication.
-									</p>
-								</div>
+									<div className="mt-6 border-t border-white/10 pt-6">
+										<p className="text-xs text-gray-600">
+											<span className="text-gray-700">{"//"}</span> No spam. Unsubscribe
+											anytime.
+											Privacy-first communication.
+										</p>
+									</div>
 							</div>
 						</div>
 					</div>
