@@ -36,6 +36,16 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 
+Run the prisma :
+
+```bash
+npx prisma generate
+# and
+npx prisma db seed
+# and
+npx prisma studio
+```
+
 figma Jamboard - https://www.figma.com/board/6NDggI8sOUgWpnuLiAWPF9/Workflow-World-System-Design-Flow?node-id=0-1&t=9s85MUQpUoxmtGXC-1
 
 

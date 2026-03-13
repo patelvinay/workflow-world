@@ -12,3 +12,130 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+enum ProjectStatus {
+  ACTIVE
+  SHIPPED
+  IN_DESIGN
+  PLANNED
+  ARCHIVED
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum DispatchStatus {
+  DRAFT
+  SCHEDULED
+  SENT
+  ARCHIVED
+}
+
+enum SubscriberStatus {
+  PENDING
+  ACTIVE
+  UNSUBSCRIBED
+  BOUNCED
+}
+
+enum ReadmeThemeVariant {
+  SYSTEM
+  CYAN_VIOLET
+  MINIMAL
+}
+
+model Project {
+  id            String        @id @default(cuid())
+  title         String
+  slug          String        @unique
+  summary       String
+  description   String        @db.Text
+  status        ProjectStatus @default(PLANNED)
+  category      String?
+  stack         String[]      @default([])
+  featured      Boolean       @default(false)
+  coverImage    String?
+  galleryImages String[]      @default([])
+  repoUrl       String?
+  liveUrl       String?
+  sortOrder     Int           @default(0)
+  publishedAt   DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  readmeSettings ReadmeSettings[]
+
+  @@index([status, sortOrder])
+  @@index([featured, publishedAt])
+}
+
+model BlogPost {
+  id          String        @id @default(cuid())
+  title       String
+  slug        String        @unique
+  excerpt     String
+  content     String        @db.Text
+  coverImage  String?
+  tags        String[]      @default([])
+  featured    Boolean       @default(false)
+  status      ContentStatus @default(DRAFT)
+  publishedAt DateTime?
+  readTime    Int?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([status, publishedAt])
+  @@index([featured, publishedAt])
+}
+
+model DispatchIssue {
+  id          String         @id @default(cuid())
+  title       String
+  subject     String
+  excerpt     String
+  content     String         @db.Text
+  status      DispatchStatus @default(DRAFT)
+  publishedAt DateTime?
+  sentAt      DateTime?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@index([status, publishedAt])
+}
+
+model Subscriber {
+  id        String           @id @default(cuid())
+  email     String           @unique
+  status    SubscriberStatus @default(PENDING)
+  source    String?
+  createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+
+  @@index([status])
+}
+
+model CurrentStatus {
+  id                String   @id @default("main")
+  currentFocus      String
+  currentlyBuilding String[] @default([])
+  currentlyLearning String[] @default([])
+  currentGoal       String
+  updatedAt         DateTime @updatedAt
+}
+
+model ReadmeSettings {
+  id               String             @id @default("default")
+  featuredProjectId String?
+  showLatestPosts  Boolean            @default(true)
+  latestPostsCount Int                @default(3)
+  showStatusCard   Boolean            @default(true)
+  themeVariant     ReadmeThemeVariant @default(SYSTEM)
+  updatedAt        DateTime           @updatedAt
+
+  featuredProject  Project? @relation(fields: [featuredProjectId], references: [id], onDelete: SetNull)
+
+  @@index([featuredProjectId])
+}
