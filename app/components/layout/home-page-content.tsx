@@ -79,7 +79,7 @@ export function HomeNav() {
 					<Link href="/systems" className="text-sm text-gray-400 hover:text-cyan-400">
 						Systems
 					</Link>
-					<a href="#logs" className="text-sm text-gray-400 hover:text-cyan-400">
+					<a href="/field-logs" className="text-sm text-gray-400 hover:text-cyan-400">
 						Field Logs
 					</a>
 					<a href="#dispatch" className="text-sm text-gray-400 hover:text-cyan-400">
