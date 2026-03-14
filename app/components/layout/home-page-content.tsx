@@ -115,7 +115,7 @@ function HeroSection() {
 
 	return (
 		<section
-			className="relative z-0 overflow-hidden px-6 py-4 lg:px-8"
+			className="relative z-0 overflow-hidden px-6 py-4 cursor-none lg:px-8"
 			onMouseMove={handleMouseMove}
 			onMouseLeave={handleMouseLeave}
 		>
@@ -239,7 +239,7 @@ function HeroSection() {
 						</span>
 						OPERATOR_ID: WW-2847 • CLEARANCE: ARCHITECT
 					</span>
-					<h1 className="text-5xl lg:text-7xl tracking-tight leading-[1.1] cursor-default">
+					<h1 className="text-5xl lg:text-7xl tracking-tight leading-[1.1] ">
 						<span className="mb-2 block text-2xl text-gray-500 lg:text-3xl" style={monoStyle}>
 							./initialize
 						</span>
@@ -248,21 +248,21 @@ function HeroSection() {
 							worth using
 						</span>
 					</h1>
-					<p className="text-lg lg:text-xl text-gray-400 leading-relaxed max-w-xl border-l-2 border-cyan-500/30 pl-4 cursor-default">
+					<p className="text-lg lg:text-xl text-gray-400 leading-relaxed max-w-xl border-l-2 border-cyan-500/30 pl-4 ">
 						Welcome to the lab. I architect, ship, and maintain production systems at the
 						intersection of elegant code and real-world impact. This is my operational base.
 					</p>
 					<div className="flex flex-wrap gap-4">
 						<Link
 							href="/systems"
-							className="inline-flex items-center gap-2 rounded-lg bg-linear-to-r from-cyan-500 to-violet-600 px-5 py-3 text-sm"
+							className="inline-flex cursor-pointer items-center gap-2 rounded-lg bg-linear-to-r from-cyan-500 to-violet-600 px-5 py-3 text-sm"
 						>
 							<Terminal className="h-4 w-4" />
 							Enter the Lab <ArrowRight className="h-4 w-4" />
 						</Link>
 						<a
 							href="#logs"
-							className="inline-flex items-center gap-2 rounded-lg border border-violet-500/30 bg-black/40 px-5 py-3 text-sm text-violet-300"
+							className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-violet-500/30 bg-black/40 px-5 py-3 text-sm text-violet-300"
 						>
 							<FileText className="h-4 w-4" /> Systems Map
 						</a>
@@ -1627,13 +1627,12 @@ function DispatchSection() {
 									</button>
 								</form>
 
-									<div className="mt-6 border-t border-white/10 pt-6">
-										<p className="text-xs text-gray-600">
-											<span className="text-gray-700">{"//"}</span> No spam. Unsubscribe
-											anytime.
-											Privacy-first communication.
-										</p>
-									</div>
+								<div className="mt-6 border-t border-white/10 pt-6">
+									<p className="text-xs text-gray-600">
+										<span className="text-gray-700">{"//"}</span> No spam. Unsubscribe anytime.
+										Privacy-first communication.
+									</p>
+								</div>
 							</div>
 						</div>
 					</div>
