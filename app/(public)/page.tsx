@@ -1,6 +1,4 @@
-import { HomePageContent } from "../components/layout/home-page-content";
-import Loading from "./loading";
-import NotFound from "./not-found";
+import { HomePageContent } from "./home/home-page-content";
 
 export default function HomePage() {
 	return (
