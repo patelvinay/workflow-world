@@ -21,14 +21,14 @@ export function HeroSection() {
 
 	return (
 		<section
-			className="relative z-0 overflow-hidden px-6 py-4 lg:px-8"
+			className="relative z-0 overflow-hidden px-6 py-4 lg:px-8 md:cursor-none"
 			onMouseMove={handleMouseMove}
 			onMouseLeave={handleMouseLeave}
 		>
-			<div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#0a0a0a_1px,transparent_1px),linear-gradient(to_bottom,#0a0a0a_1px,transparent_1px)] bg-size-[80px_80px]" />
-			<div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_30%_50%,rgba(6,182,212,0.05),transparent_50%),radial-gradient(circle_at_70%_50%,rgba(139,92,246,0.05),transparent_50%)]" />
+			<div className="absolute inset-0 z-0 md:cursor-none bg-[linear-gradient(to_right,#0a0a0a_1px,transparent_1px),linear-gradient(to_bottom,#0a0a0a_1px,transparent_1px)] bg-size-[80px_80px]" />
+			<div className="absolute inset-0 z-0 md:cursor-none bg-[radial-gradient(circle_at_30%_50%,rgba(6,182,212,0.05),transparent_50%),radial-gradient(circle_at_70%_50%,rgba(139,92,246,0.05),transparent_50%)]" />
 			<svg
-				className="absolute inset-0 z-0 h-full w-full opacity-30"
+				className="absolute inset-0 z-0 h-full w-full opacity-30 md:cursor-none"
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<line x1="10%" y1="20%" x2="40%" y2="50%" stroke="url(#grad1)" strokeWidth="1" />
@@ -134,15 +134,15 @@ export function HeroSection() {
 				/>
 			</motion.div>
 			<div className="relative z-20 mx-auto flex max-w-7xl flex-col justify-center gap-10 lg:flex-row lg:tems-center lg:justify-center lg:gap-20">
-				<motion.div {...fadeUp} className="space-y-7 ">
-					<span className="inline-flex items-center gap-2 rounded-md border border-cyan-500/30 bg-cyan-500/10 px-3 py-2 text-[10px] text-cyan-300 font-mono-ui">
-						<span className="relative flex size-2">
+				<motion.div {...fadeUp} className="space-y-7 md:cursor-none">
+					<span className="inline-flex items-center gap-2 rounded-md border border-cyan-500/30 bg-cyan-500/10 px-3 py-2 text-[10px] text-cyan-300 font-mono-ui md:cursor-none">
+						<span className="relative flex size-2 md:cursor-none">
 							<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-300 opacity-75"></span>
 							<span className="relative inline-flex size-2 rounded-full bg-cyan-300"></span>
 						</span>
 						OPERATOR_ID: WW-2847 • CLEARANCE: ARCHITECT
 					</span>
-					<h1 className="text-5xl lg:text-7xl tracking-tight leading-[1.1] cursor-default">
+					<h1 className="text-5xl lg:text-7xl tracking-tight leading-[1.1] md:cursor-none">
 						<span className="mb-2 block text-2xl text-gray-500 lg:text-3xl font-mono-ui">
 							./initialize
 						</span>
@@ -151,26 +151,26 @@ export function HeroSection() {
 							worth using
 						</span>
 					</h1>
-					<p className="text-lg lg:text-xl text-gray-400 leading-relaxed max-w-xl border-l-2 border-cyan-500/30 pl-4 cursor-default">
+					<p className="text-lg lg:text-xl text-gray-400 leading-relaxed max-w-xl border-l-2 border-cyan-500/30 pl-4 md:cursor-none">
 						Welcome to the lab. I architect, ship, and maintain production systems at the
 						intersection of elegant code and real-world impact. This is my operational base.
 					</p>
 					<div className="flex flex-wrap gap-4">
 						<Link
 							href="/systems"
-							className="inline-flex items-center gap-2 rounded-lg bg-linear-to-r from-cyan-500 to-violet-600 px-5 py-3 text-sm"
+							className="inline-flex items-center gap-2 rounded-lg bg-linear-to-r from-cyan-500 to-violet-600 px-5 py-3 text-sm cursor-pointer"
 						>
 							<Terminal className="h-4 w-4" />
 							Enter the Lab <ArrowRight className="h-4 w-4" />
 						</Link>
 						<a
 							href="#logs"
-							className="inline-flex items-center gap-2 rounded-lg border border-violet-500/30 bg-black/40 px-5 py-3 text-sm text-violet-300"
+							className="inline-flex items-center gap-2 rounded-lg border border-violet-500/30 bg-black/40 px-5 py-3 text-sm text-violet-300 cursor-pointer"
 						>
 							<FileText className="h-4 w-4" /> Systems Map
 						</a>
 					</div>
-					<div className="grid grid-cols-3 gap-4 pt-4">
+					<div className="grid grid-cols-3 gap-4 pt-4 md:cursor-none">
 						{[
 							{ value: "47", label: "Systems", sublabel: "deployed" },
 							{ value: "12K+", label: "Commits", sublabel: "this year" },
@@ -187,25 +187,25 @@ export function HeroSection() {
 						))}
 					</div>
 				</motion.div>
-				<motion.div {...fadeUp} className="w-full lg:w-[28rem] lg:flex-none xl:w-[31rem]">
-					<div className="relative">
-						<div className="relative overflow-hidden rounded-xl border border-cyan-500/30 bg-black/90 shadow-2xl backdrop-blur-xl">
-							<div className="flex items-center justify-between border-b border-white/10 bg-gradient-to-r from-cyan-950/50 to-violet-950/50 px-4 py-2.5">
-								<div className="flex items-center gap-3">
-									<div className="flex gap-1.5">
+				<motion.div {...fadeUp} className="w-full  lg:w-[28rem] lg:flex-none xl:w-[31rem]">
+					<div className="relative md:cursor-none">
+						<div className="relative overflow-hidden rounded-xl border border-cyan-500/30 bg-black/90 shadow-2xl backdrop-blur-xl md:cursor-none">
+							<div className="flex items-center justify-between border-b border-white/10 bg-gradient-to-r from-cyan-950/50 to-violet-950/50 px-4 py-2.5 md:cursor-none">
+								<div className="flex items-center gap-3 md:cursor-none">
+									<div className="flex gap-1.5 md:cursor-none">
 										<div className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
 										<div className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
 										<div className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
 									</div>
 									<span className="text-xs text-gray-500 font-mono-ui">workflow-world.local</span>
 								</div>
-								<div className="flex items-center gap-2">
+								<div className="flex items-center gap-2 md:cursor-none">
 									<Activity className="h-3 w-3 animate-pulse text-green-400" />
 									<span className="text-xs text-green-400 font-mono-ui">LIVE</span>
 								</div>
 							</div>
 
-							<div className="h-80 space-y-3 overflow-hidden p-4 text-xs font-mono-ui">
+							<div className="h-80 space-y-3 overflow-hidden p-4 text-xs font-mono-ui md:cursor-none">
 								<div className="text-cyan-400">
 									<span className="text-gray-600">$</span> ./initialize-systems
 								</div>
@@ -267,8 +267,8 @@ export function HeroSection() {
 							</div>
 						</div>
 
-						<div className="absolute -left-4 top-8 w-32 rounded-lg border border-violet-500/30 bg-black/90 p-3 shadow-xl backdrop-blur-xl">
-							<div className="mb-2 flex items-center gap-2">
+						<div className="absolute -left-4 top-8 w-32 rounded-lg border border-violet-500/30 bg-black/90 p-3 shadow-xl backdrop-blur-xl md:cursor-none">
+							<div className="mb-2 flex items-center gap-2 md:cursor-none">
 								<GitBranch className="h-3 w-3 text-violet-400" />
 								<span className="text-xs text-gray-500">Deploy Freq</span>
 							</div>
@@ -276,8 +276,8 @@ export function HeroSection() {
 							<div className="mt-1 text-[10px] text-green-400">↑ 12% vs last month</div>
 						</div>
 
-						<div className="absolute -right-4 bottom-8 w-36 rounded-lg border border-cyan-500/30 bg-black/90 p-3 shadow-xl backdrop-blur-xl">
-							<div className="mb-2 flex items-center gap-2">
+						<div className="absolute -right-4 bottom-8 w-36 rounded-lg border border-cyan-500/30 bg-black/90 p-3 shadow-xl backdrop-blur-xl md:cursor-none">
+							<div className="mb-2 flex items-center gap-2 md:cursor-none">
 								<Layers className="h-3 w-3 text-cyan-400" />
 								<span className="text-xs text-gray-500">Active Sprint</span>
 							</div>
