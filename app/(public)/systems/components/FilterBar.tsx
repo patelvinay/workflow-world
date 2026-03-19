@@ -18,7 +18,7 @@ interface FilterBarProps {
 
 export function SystemsFilterBar({ activeFilters, setActiveFilters }: FilterBarProps) {
 	return (
-		<div className="sticky top-[72px] z-40 border-y border-white/10 bg-black/80 backdrop-blur-xl">
+		<div className="border-y border-white/10 bg-black/80 backdrop-blur-xl">
 			<div className="mx-auto max-w-7xl px-6 py-6 lg:px-8">
 				<div className="space-y-6">
 					<div className="relative">
