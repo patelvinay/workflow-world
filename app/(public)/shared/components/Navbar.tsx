@@ -49,9 +49,9 @@ export function NavBar() {
 						className="inline-flex h-7 w-7 p-2 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-200 transition hover:border-cyan-400/40 hover:text-cyan-400 md:hidden"
 					>
 						{isMenuOpen ? (
-							<X className="h-5 w-5   rounded-full" />
+							<X className="h-5 w-5" />
 						) : (
-							<Menu className="h-5 w-5 rounded-full" />
+							<Menu className="h-5 w-5" />
 						)}
 					</button>
 				</div>
