@@ -1,7 +1,7 @@
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-export function SystemsNav() {
+export function PagesNavBar() {
 	return (
 		<nav className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-xl">
 			<div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-8">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SystemsNav } from "./components/SystemsNav";
+import { PagesNavBar } from "../shared/components/PagesNavBar";
 
 import { SystemsHeroSection } from "./components/HeroSection";
 import { SystemsFilterBar } from "./components/FilterBar";
@@ -66,7 +66,7 @@ export default function SystemPageContent() {
 			<div className="fixed inset-0 bg-[linear-gradient(to_right,#0a0a0a_1px,transparent_1px),linear-gradient(to_bottom,#0a0a0a_1px,transparent_1px)] bg-[size:80px_80px] opacity-50" />
 
 			<div className="relative">
-				<SystemsNav />
+				<PagesNavBar />
 				<SystemsHeroSection />
 				<SystemsFilterBar activeFilters={activeFilters} setActiveFilters={setActiveFilters} />
 				{featuredSystem && <FeaturedSection featuredSystem={featuredSystem} />}

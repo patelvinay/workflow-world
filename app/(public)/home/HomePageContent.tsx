@@ -1,6 +1,6 @@
 "use client";
 
-import { NavBar } from "../shared/components/Navbar";
+import { HomeNavBar } from "../shared/components/HomeNavBar";
 import { HeroSection } from "./components/HeroSection";
 import { TerminalSection } from "./components/TerminalSection";
 import { SystemsSection } from "./components/SystemsSection";
@@ -12,7 +12,7 @@ import { FooterSection } from "../shared/components/FooterSection";
 export function HomePageContent() {
 	return (
 		<div className="min-h-screen bg-black text-white">
-			<NavBar />
+			<HomeNavBar />
 			<main className="pt-16">
 				<HeroSection />
 				<TerminalSection />

@@ -4,11 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ExternalLink, FileText } from "lucide-react";
 
-const monoStyle = {
-	fontFamily:
-		"var(--font-geist-mono, ui-monospace), SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-};
-
 export type LogCardEntry = {
 	id: string;
 	slug: string;
@@ -49,9 +44,7 @@ export function LogCard({ log }: LogCardProps) {
 				</div>
 
 				<div className="p-4 md:col-span-8 md:p-5">
-					<div className="mb-2 text-xs text-gray-600" style={monoStyle}>
-						{log.id}
-					</div>
+					<div className="mb-2 text-xs text-gray-600 font-mono-ui">{log.id}</div>
 
 					<h3 className="mb-3 text-base leading-tight text-white transition-colors group-hover:text-violet-400 md:text-xl lg:text-[1.45rem]">
 						{log.title}
@@ -66,14 +59,13 @@ export function LogCard({ log }: LogCardProps) {
 							{log.tags.slice(0, 2).map((tag) => (
 								<span
 									key={tag}
-									className="rounded border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-gray-400"
-									style={monoStyle}
+									className="rounded border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-gray-400 font-mono-ui"
 								>
 									{tag}
 								</span>
 							))}
 							{log.tags.length > 2 && (
-								<span className="px-2 py-0.5 text-[10px] text-gray-600" style={monoStyle}>
+								<span className="px-2 py-0.5 text-[10px] text-gray-600 font-mono-ui">
 									+{log.tags.length - 2}
 								</span>
 							)}
@@ -81,7 +73,7 @@ export function LogCard({ log }: LogCardProps) {
 					</div>
 
 					<div className="flex items-center justify-between border-t border-white/10 pt-2.5">
-						<div className="flex items-center gap-3 text-[10px] text-gray-600 sm:text-xs" style={monoStyle}>
+						<div className="font-mono-ui flex items-center gap-3 text-[10px] text-gray-600 sm:text-xs">
 							<div className="flex items-center gap-1">
 								<Calendar className="h-3 w-3" />
 								<span>{log.publishedDate}</span>
@@ -92,10 +84,7 @@ export function LogCard({ log }: LogCardProps) {
 								<span>{log.readTime}</span>
 							</div>
 						</div>
-						<span
-							className="flex items-center gap-1.5 text-xs text-violet-400 opacity-0 transition-opacity group-hover:opacity-100"
-							style={monoStyle}
-						>
+						<span className="font-mono-ui flex items-center gap-1.5 text-xs text-violet-400 opacity-0 transition-opacity group-hover:opacity-100">
 							Read
 							<ExternalLink className="h-3 w-3" />
 						</span>

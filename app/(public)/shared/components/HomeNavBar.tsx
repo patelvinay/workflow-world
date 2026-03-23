@@ -4,7 +4,7 @@ import { Menu, Terminal, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
-export function NavBar() {
+export function HomeNavBar() {
 	const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
 	const closeMenu = () => setIsMenuOpen(false);
