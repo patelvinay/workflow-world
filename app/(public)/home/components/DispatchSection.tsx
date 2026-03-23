@@ -29,29 +29,31 @@ export function DispatchSection() {
 
 				<div className="grid gap-8 lg:grid-cols-12">
 					<div className="lg:col-span-7">
-						<div className="overflow-hidden rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-black via-gray-950 to-black shadow-2xl">
-							<div className="flex items-center justify-between border-b border-white/10 bg-gradient-to-r from-cyan-950/30 to-violet-950/30 px-6 py-3">
-								<div className="flex items-center gap-3">
+						<div className="overflow-x-clip rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-black via-gray-950 to-black shadow-2xl">
+							<div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 bg-gradient-to-r from-cyan-950/30 to-violet-950/30 px-4 py-3 sm:px-6">
+								<div className="flex min-w-0 items-center gap-3">
 									<div className="flex gap-1.5">
 										<div className="h-2.5 w-2.5 rounded-full bg-red-500/70" />
 										<div className="h-2.5 w-2.5 rounded-full bg-yellow-500/70" />
 										<div className="h-2.5 w-2.5 rounded-full bg-green-500/70" />
 									</div>
-									<span className="text-xs text-gray-500 font-mono-ui">dispatch://subscribe</span>
+									<span className="min-w-0 break-all text-xs text-gray-500 font-mono-ui">
+										dispatch://subscribe
+									</span>
 								</div>
-								<div className="flex items-center gap-2">
+								<div className="flex shrink-0 items-center gap-2">
 									<Lock className="h-3 w-3 text-green-400" />
 									<span className="text-xs text-green-400 font-mono-ui">SECURE</span>
 								</div>
 							</div>
 
-							<div className="p-8 font-mono-ui">
+							<div className="p-5 font-mono-ui sm:p-8">
 								<div className="mb-6">
-									<div className="mb-4 flex items-center gap-2 text-cyan-400">
+									<div className="mb-4 flex flex-wrap items-center gap-2 text-cyan-400">
 										<span className="text-gray-600">dispatch@workflow-world</span>
 										<span className="text-gray-700">~</span>
 										<span className="text-violet-400">$</span>
-										<span className="text-cyan-400">./subscribe-operator</span>
+										<span className="break-all text-cyan-400">./subscribe-operator</span>
 									</div>
 									<p className="mb-6 border-l-2 border-cyan-500/30 pl-4 text-sm text-gray-500">
 										Join 3,247 builders receiving monthly technical dispatches.
@@ -152,13 +154,15 @@ export function DispatchSection() {
 								].map((item) => (
 									<div
 										key={item.label}
-										className="flex items-start justify-between border-b border-white/10 pb-4 last:border-0 last:pb-0"
+										className="flex flex-col gap-2 border-b border-white/10 pb-4 last:border-0 last:pb-0 sm:flex-row sm:items-start sm:justify-between"
 									>
-										<div>
+										<div className="min-w-0">
 											<div className="mb-1 text-xs text-gray-600 font-mono-ui">{item.label}</div>
 											<div className="text-sm text-white font-mono-ui">{item.value}</div>
 										</div>
-										<div className="text-xs text-gray-500">{item.detail}</div>
+										<div className="text-xs text-gray-500 sm:max-w-[11rem] sm:text-right">
+											{item.detail}
+										</div>
 									</div>
 								))}
 							</div>
