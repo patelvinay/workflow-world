@@ -27,12 +27,12 @@ export function NavBar() {
 						<Link href="/systems" className="text-sm text-gray-400 hover:text-cyan-400">
 							Systems
 						</Link>
-						<a href="#logs" className="text-sm text-gray-400 hover:text-cyan-400">
+						<Link href="/field-logs" className="text-sm text-gray-400 hover:text-cyan-400">
 							Field Logs
-						</a>
-						<a href="#dispatch" className="text-sm text-gray-400 hover:text-cyan-400">
+						</Link>
+						<Link href="/dispatch" className="text-sm text-gray-400 hover:text-cyan-400">
 							Dispatch
-						</a>
+						</Link>
 						<span className="h-4 w-px bg-white/30" />
 						<span className="inline-flex items-center gap-2 text-xs text-green-400">
 							<span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
@@ -48,11 +48,7 @@ export function NavBar() {
 						onClick={() => setIsMenuOpen((open) => !open)}
 						className="inline-flex h-7 w-7 p-2 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-200 transition hover:border-cyan-400/40 hover:text-cyan-400 md:hidden"
 					>
-						{isMenuOpen ? (
-							<X className="h-5 w-5" />
-						) : (
-							<Menu className="h-5 w-5" />
-						)}
+						{isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
 					</button>
 				</div>
 
