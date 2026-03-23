@@ -72,7 +72,7 @@ export function LogActivityStrip() {
 						{metrics.map((metric) => (
 							<div
 								key={metric.label}
-								className="rounded-lg border border-white/10 bg-gradient-to-br from-gray-950/50 to-black/50 p-5 transition-all hover:border-white/20"
+								className="rounded-lg border border-white/10 bg-linear-to-br from-gray-950/50 to-black/50 p-5 transition-all hover:border-white/20"
 							>
 								<div className={`mb-4 inline-flex rounded-lg border p-2 ${metric.iconClass}`}>
 									<metric.icon className="h-5 w-5" />
@@ -86,7 +86,7 @@ export function LogActivityStrip() {
 						))}
 					</div>
 
-					<div className="mt-8 rounded-xl border border-white/10 bg-gradient-to-r from-gray-950/30 to-black/30 p-6">
+					<div className="mt-8 rounded-xl border border-white/10 bg-linear-to-r from-gray-950/30 to-black/30 p-6">
 						<div className="mb-6">
 							<div className="mb-2 text-xs uppercase tracking-wider text-gray-600 font-mono-ui">
 								→ Publication Timeline (Last 6 Months)
@@ -98,7 +98,7 @@ export function LogActivityStrip() {
 								<div key={item.month} className="flex flex-col items-center">
 									<div className="flex h-24 w-full items-end overflow-hidden rounded-lg bg-white/5 p-2">
 										<div
-											className="w-full rounded bg-gradient-to-t from-violet-500 to-cyan-500 transition-all"
+											className="w-full rounded bg-linear-to-t from-violet-500 to-cyan-500 transition-all"
 											style={{ height: `${(item.count / 5) * 100}%` }}
 										/>
 									</div>

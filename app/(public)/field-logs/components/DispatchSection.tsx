@@ -6,8 +6,8 @@ export function DispatchSection() {
 	return (
 		<section id="dispatch" className="border-t border-white/10 px-6 py-24 lg:px-8">
 			<div className="mx-auto max-w-4xl">
-				<div className="relative overflow-hidden rounded-2xl border border-violet-500/20 bg-gradient-to-br from-gray-950 to-black p-12">
-					<div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 opacity-10 blur-3xl" />
+				<div className="relative overflow-hidden rounded-2xl border border-violet-500/20 bg-linear-to-br from-gray-950 to-black p-12">
+					<div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-linear-to-br from-violet-500 to-cyan-500 opacity-10 blur-3xl" />
 
 					<div className="relative">
 						<div className="mb-4 flex items-center gap-2">
@@ -31,7 +31,7 @@ export function DispatchSection() {
 							/>
 							<button
 								type="submit"
-								className="font-mono-ui rounded-lg bg-gradient-to-r from-violet-500 to-cyan-500 px-8 py-4 text-white transition-all hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]"
+								className="font-mono-ui rounded-lg bg-linear-to-r from-violet-500 to-cyan-500 px-8 py-4 text-white transition-all hover:shadow-[0_0_30px_rgba(139,92,246,0.3)]"
 							>
 								Subscribe
 							</button>

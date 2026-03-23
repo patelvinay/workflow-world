@@ -63,7 +63,7 @@ export default function SystemPageContent() {
 
 	return (
 		<div className="min-h-screen bg-black text-white">
-			<div className="fixed inset-0 bg-[linear-gradient(to_right,#0a0a0a_1px,transparent_1px),linear-gradient(to_bottom,#0a0a0a_1px,transparent_1px)] bg-[size:80px_80px] opacity-50" />
+			<div className="fixed inset-0 bg-[linear-gradient(to_right,#0a0a0a_1px,transparent_1px),linear-gradient(to_bottom,#0a0a0a_1px,transparent_1px)] bg-size-[80px_80px] opacity-50" />
 
 			<div className="relative">
 				<PagesNavBar />

@@ -21,9 +21,9 @@ export function FeaturedLogsSection({ log }: FeaturedLogProps) {
 						</span>
 					</div>
 
-					<div className="group relative overflow-hidden rounded-2xl border border-amber-500/20 bg-gradient-to-br from-gray-950 to-black shadow-2xl">
+					<div className="group relative overflow-hidden rounded-2xl border border-amber-500/20 bg-linear-to-br from-gray-950 to-black shadow-2xl">
 						<div className="grid lg:grid-cols-12">
-							<div className="relative aspect-[16/10] overflow-hidden lg:col-span-5 lg:aspect-auto">
+							<div className="relative aspect-16/10 overflow-hidden lg:col-span-5 lg:aspect-auto">
 								<Image
 									src={log.coverImage}
 									alt={log.title}
@@ -31,7 +31,7 @@ export function FeaturedLogsSection({ log }: FeaturedLogProps) {
 									sizes="(min-width: 1024px) 40vw, 100vw"
 									className="absolute inset-0 object-cover transition-transform duration-700 group-hover:scale-105"
 								/>
-								<div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
+								<div className="absolute inset-0 bg-linear-to-r from-black via-black/80 to-transparent" />
 
 								<div className="absolute top-6 left-6">
 									<div className="rounded-lg border border-amber-500/30 bg-black/60 px-4 py-2 backdrop-blur-sm">
@@ -80,7 +80,7 @@ export function FeaturedLogsSection({ log }: FeaturedLogProps) {
 								<div className="flex flex-wrap gap-3">
 									<Link
 										href={`/field-logs/${log.slug}`}
-										className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-cyan-500 to-violet-600 px-6 py-3 text-white transition-all hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]"
+										className="flex items-center gap-2 rounded-lg bg-linear-to-r from-cyan-500 to-violet-600 px-6 py-3 text-white transition-all hover:shadow-[0_0_30px_rgba(34,211,238,0.3)]"
 									>
 										<span className="text-sm font-mono-ui">Open Log</span>
 										<ExternalLink className="h-4 w-4" />
@@ -89,7 +89,7 @@ export function FeaturedLogsSection({ log }: FeaturedLogProps) {
 							</div>
 						</div>
 
-						<div className="absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 opacity-0 blur-3xl transition-opacity group-hover:opacity-10" />
+						<div className="absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-linear-to-br from-amber-500 to-orange-600 opacity-0 blur-3xl transition-opacity group-hover:opacity-10" />
 					</div>
 				</div>
 			</div>

@@ -23,10 +23,10 @@ export function LogCard({ log }: LogCardProps) {
 	return (
 		<Link
 			href={`/field-logs/${log.slug}`}
-			className="group relative block overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-gray-950/80 to-black/80 backdrop-blur-sm transition-all hover:border-violet-500/30"
+			className="group relative block overflow-hidden rounded-xl border border-white/10 bg-linear-to-br from-gray-950/80 to-black/80 backdrop-blur-sm transition-all hover:border-violet-500/30"
 		>
 			<div className="grid grid-cols-1 gap-0 md:grid-cols-12">
-				<div className="relative aspect-[5/4] overflow-hidden border-b border-white/10 md:col-span-4 md:aspect-auto md:border-r md:border-b-0">
+				<div className="relative aspect-5/4 overflow-hidden border-b border-white/10 md:col-span-4 md:aspect-auto md:border-r md:border-b-0">
 					<Image
 						src={log.coverImage}
 						alt={log.title}
@@ -34,7 +34,7 @@ export function LogCard({ log }: LogCardProps) {
 						sizes="(min-width: 768px) 18vw, 100vw"
 						className="object-cover transition-transform duration-500 group-hover:scale-110"
 					/>
-					<div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-transparent" />
+					<div className="absolute inset-0 bg-linear-to-br from-black/60 via-black/40 to-transparent" />
 
 					<div className="absolute bottom-3 left-3">
 						<div className="rounded-lg border border-white/10 bg-black/60 p-2 backdrop-blur-sm">
@@ -92,7 +92,7 @@ export function LogCard({ log }: LogCardProps) {
 				</div>
 			</div>
 
-			<div className="absolute -right-12 -bottom-12 h-32 w-32 rounded-full bg-gradient-to-br from-violet-500 to-cyan-500 opacity-0 blur-3xl transition-opacity group-hover:opacity-10" />
+			<div className="absolute -right-12 -bottom-12 h-32 w-32 rounded-full bg-linear-to-br from-violet-500 to-cyan-500 opacity-0 blur-3xl transition-opacity group-hover:opacity-10" />
 		</Link>
 	);
 }

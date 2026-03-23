@@ -36,7 +36,7 @@ export function HeroSection() {
 					<div className="lg:col-span-7">
 						<div className="mb-8">
 							<div className="mb-6 flex items-center gap-3">
-								<div className="h-12 w-1 bg-gradient-to-b from-cyan-500 to-violet-500" />
+								<div className="h-12 w-1 bg-linear-to-b from-cyan-500 to-violet-500" />
 								<div>
 									<div className="mb-2 flex items-center gap-2">
 										<FileText className="h-5 w-5 text-cyan-400" />
@@ -78,8 +78,8 @@ export function HeroSection() {
 					</div>
 
 					<div className="lg:col-span-5">
-						<div className="relative overflow-hidden rounded-xl border border-cyan-500/20 bg-gradient-to-br from-black via-gray-950 to-black shadow-2xl">
-							<div className="border-b border-white/10 bg-gradient-to-r from-cyan-950/30 to-violet-950/30 px-6 py-3">
+						<div className="relative overflow-hidden rounded-xl border border-cyan-500/20 bg-linear-to-br from-black via-gray-950 to-black shadow-2xl">
+							<div className="border-b border-white/10 bg-linear-to-r from-cyan-950/30 to-violet-950/30 px-6 py-3">
 								<div className="flex items-center justify-between">
 									<div className="flex items-center gap-2">
 										<FileText className="h-4 w-4 text-violet-400" />
