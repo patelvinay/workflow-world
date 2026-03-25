@@ -3,6 +3,8 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient } from "../app/generated/prisma/client";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { systems } from "../app/(public)/systems/data/Systems";
+import { logs } from "../app/(public)/field-logs/data/logs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -28,8 +30,54 @@ function slugify(value: string) {
 		.replace(/^-+|-+$/g, "");
 }
 
+function parseProjectStatus(status: (typeof systems)[number]["status"]) {
+	switch (status) {
+		case "planned":
+			return "PLANNED" as const;
+		case "staging":
+			return "IN_DESIGN" as const;
+		case "production":
+		case "active":
+		default:
+			return "ACTIVE" as const;
+	}
+}
+
+function parsePublishedMonth(value: string) {
+	const [year, month] = value.split("-").map(Number);
+	return new Date(Date.UTC(year, (month ?? 1) - 1, 1, 12, 0, 0));
+}
+
+function parseReadTime(value: string) {
+	const match = value.match(/\d+/);
+	return match ? Number(match[0]) : null;
+}
+
+function buildProjectDescription(system: (typeof systems)[number]) {
+	const sections = [
+		`# ${system.title}`,
+		"",
+		system.objective,
+		"",
+		`Codename: ${system.codename}`,
+		`Deployment version: ${system.deployment.version}`,
+		`Deployment environment: ${system.deployment.env}`,
+		`Replicas: ${system.deployment.replicas}`,
+	];
+
+	if (system.outcome) {
+		sections.push(`Outcome: ${system.outcome}`);
+	}
+
+	return sections.join("\n");
+}
+
+function buildBlogContent(log: (typeof logs)[number]) {
+	return `# ${log.title}\n\n${log.excerpt}\n\nTags: ${log.tags.join(", ")}`;
+}
+
 async function main() {
-	const technologies = [
+	const seedTechnologies = [
 		{ name: "Next.js", websiteUrl: "https://nextjs.org" },
 		{ name: "TypeScript", websiteUrl: "https://www.typescriptlang.org" },
 		{ name: "Prisma", websiteUrl: "https://www.prisma.io" },
@@ -37,22 +85,35 @@ async function main() {
 		{ name: "Tailwind", websiteUrl: "https://tailwindcss.com" },
 	];
 
-	for (const technology of technologies) {
+	const technologyNames = Array.from(
+		new Set([
+			...seedTechnologies.map((technology) => technology.name),
+			...systems.flatMap((system) => system.stack),
+		]),
+	);
+
+	for (const technologyName of technologyNames) {
+		const seedTechnology = seedTechnologies.find(
+			(technology) => technology.name === technologyName,
+		);
+
 		await db.technology.upsert({
-			where: { slug: slugify(technology.name) },
+			where: { slug: slugify(technologyName) },
 			update: {
-				name: technology.name,
-				websiteUrl: technology.websiteUrl,
+				name: technologyName,
+				websiteUrl: seedTechnology?.websiteUrl,
 			},
 			create: {
-				name: technology.name,
-				slug: slugify(technology.name),
-				websiteUrl: technology.websiteUrl,
+				name: technologyName,
+				slug: slugify(technologyName),
+				websiteUrl: seedTechnology?.websiteUrl,
 			},
 		});
 	}
 
-	const tags = ["portfolio", "systems", "nextjs"];
+	const tags = Array.from(
+		new Set(["portfolio", "systems", "nextjs", ...logs.flatMap((log) => log.tags)]),
+	);
 
 	for (const tag of tags) {
 		await db.tag.upsert({
@@ -108,7 +169,7 @@ async function main() {
 
 	const projectTechnologies = await db.technology.findMany({
 		where: {
-			slug: { in: technologies.map((technology) => slugify(technology.name)) },
+			slug: { in: seedTechnologies.map((technology) => slugify(technology.name)) },
 		},
 	});
 
@@ -141,6 +202,68 @@ async function main() {
 			},
 		],
 	});
+
+	for (const [index, system] of systems.entries()) {
+		const project = await db.project.upsert({
+			where: { slug: system.codename },
+			update: {
+				title: system.title,
+				summary: system.objective,
+				description: buildProjectDescription(system),
+				status: parseProjectStatus(system.status),
+				category: "Systems",
+				featured: system.featured ?? false,
+				coverImage: system.image,
+				sortOrder: index + 2,
+				publishedAt: parsePublishedMonth(system.date),
+			},
+			create: {
+				title: system.title,
+				slug: system.codename,
+				summary: system.objective,
+				description: buildProjectDescription(system),
+				status: parseProjectStatus(system.status),
+				category: "Systems",
+				featured: system.featured ?? false,
+				coverImage: system.image,
+				sortOrder: index + 2,
+				publishedAt: parsePublishedMonth(system.date),
+			},
+		});
+
+		await db.projectTechnology.deleteMany({
+			where: { projectId: project.id },
+		});
+
+		const systemTechnologies = await db.technology.findMany({
+			where: {
+				slug: {
+					in: system.stack.map((technology) => slugify(technology)),
+				},
+			},
+		});
+
+		await db.projectTechnology.createMany({
+			data: systemTechnologies.map((technology) => ({
+				projectId: project.id,
+				technologyId: technology.id,
+			})),
+		});
+
+		await db.mediaAsset.deleteMany({
+			where: { projectId: project.id },
+		});
+
+		await db.mediaAsset.create({
+			data: {
+				url: system.image,
+				alt: `${system.title} cover image`,
+				caption: system.outcome ?? system.objective,
+				sortOrder: 0,
+				projectId: project.id,
+			},
+		});
+	}
 
 	const blogPost = await db.blogPost.upsert({
 		where: { slug: "building-workflow-world" },
@@ -199,6 +322,66 @@ async function main() {
 			blogPostId: blogPost.id,
 		},
 	});
+
+	for (const log of logs) {
+		const seededBlogPost = await db.blogPost.upsert({
+			where: { slug: log.slug },
+			update: {
+				title: log.title,
+				excerpt: log.excerpt,
+				content: buildBlogContent(log),
+				coverImage: log.coverImage,
+				featured: log.featured ?? false,
+				status: "PUBLISHED",
+				readTime: parseReadTime(log.readTime),
+				publishedAt: new Date(`${log.publishedDate}T12:00:00.000Z`),
+			},
+			create: {
+				title: log.title,
+				slug: log.slug,
+				excerpt: log.excerpt,
+				content: buildBlogContent(log),
+				coverImage: log.coverImage,
+				featured: log.featured ?? false,
+				status: "PUBLISHED",
+				readTime: parseReadTime(log.readTime),
+				publishedAt: new Date(`${log.publishedDate}T12:00:00.000Z`),
+			},
+		});
+
+		await db.blogPostTag.deleteMany({
+			where: { blogPostId: seededBlogPost.id },
+		});
+
+		const logTags = await db.tag.findMany({
+			where: {
+				slug: {
+					in: log.tags.map((tag) => slugify(tag)),
+				},
+			},
+		});
+
+		await db.blogPostTag.createMany({
+			data: logTags.map((tag) => ({
+				blogPostId: seededBlogPost.id,
+				tagId: tag.id,
+			})),
+		});
+
+		await db.mediaAsset.deleteMany({
+			where: { blogPostId: seededBlogPost.id },
+		});
+
+		await db.mediaAsset.create({
+			data: {
+				url: log.coverImage,
+				alt: `${log.title} cover image`,
+				caption: log.excerpt,
+				sortOrder: 0,
+				blogPostId: seededBlogPost.id,
+			},
+		});
+	}
 
 	await db.dispatchIssue.deleteMany();
 	await db.dispatchIssue.create({
